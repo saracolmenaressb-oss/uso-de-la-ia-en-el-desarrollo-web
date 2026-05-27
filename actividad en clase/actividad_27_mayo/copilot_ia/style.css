@@ -1,0 +1,175 @@
+/* Fuente y colores base */
+:root {
+    --vino: #6a0f1a;
+    --rosa: #f7c6d9;
+    --beige: #f5f5dc;
+    --blanco: #ffffff;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: var(--beige);
+    color: var(--vino);
+  }
+  
+  /* HEADER */
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--vino);
+    color: var(--blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+  }
+  
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  header nav a {
+    color: var(--blanco);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  header nav a:hover {
+    color: var(--rosa);
+  }
+  
+  /* HERO */
+  .hero {
+    height: 100vh;
+    background: url('https://source.unsplash.com/1600x900/?technology') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  
+  .hero-content {
+    position: relative;
+    text-align: center;
+    color: var(--blanco);
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+  }
+  
+  .hero p {
+    margin: 1rem 0;
+  }
+  
+  .hero button {
+    background: var(--rosa);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s, background 0.3s;
+  }
+  
+  .hero button:hover {
+    transform: scale(1.1);
+    background: var(--vino);
+    color: var(--blanco);
+  }
+  
+  /* SECCIONES */
+  .section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  .section h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  /* CARDS */
+  .cards, .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .card {
+    background: var(--blanco);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card h3 {
+    margin: 1rem 0 0.5rem;
+  }
+  
+  .card p {
+    padding: 0 1rem 1rem;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+  
+  /* SOBRE MÍ */
+  .about p {
+    max-width: 600px;
+    margin: auto;
+    font-size: 1.1rem;
+  }
+  
+  /* FOOTER */
+  footer {
+    background: var(--vino);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .card {
+      width: 100%;
+    }
+  }
+  

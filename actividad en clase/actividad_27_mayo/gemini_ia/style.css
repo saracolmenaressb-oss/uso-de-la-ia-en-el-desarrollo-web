@@ -1,0 +1,500 @@
+/* ==========================================================================
+   1. VARIABLES DE CSS & CONFIGURACIÓN BASE
+   ========================================================================== */
+   :root {
+    /* Paleta de colores solicitada */
+    --color-rojo-vino: #6B1D2F;
+    --color-rosa-pastel: #F3C6C6;
+    --color-beige-claro: #F9F6F0;
+    --color-blanco: #FFFFFF;
+    --color-oscuro: #2C2525;
+    --color-texto-mutado: #615555;
+    
+    /* Fuentes */
+    --font-principal: 'Inter', sans-serif;
+    --font-titulos: 'Playfair Display', serif;
+    
+    /* Efectos globales */
+    --shadow-suave: 0 10px 30px rgba(107, 29, 47, 0.06);
+    --shadow-hover: 0 20px 40px rgba(107, 29, 47, 0.12);
+    --border-radius: 16px;
+    --transition-fast: cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
+}
+
+/* Reset de estilos básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Scroll suave nativo para navegadores que lo soportan */
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Evita que el header fijo tape los títulos al hacer ancla */
+}
+
+body {
+    font-family: var(--font-principal);
+    background-color: var(--color-beige-claro);
+    color: var(--color-oscuro);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* ==========================================================================
+   2. ESTILOS COMPARTIDOS / COMPONENTES REUSABLES
+   ========================================================================== */
+.section-container {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bg-alt {
+    background-color: var(--color-blanco);
+    max-width: 100%;
+    padding-left: calc((100vw - 1200px) / 2 + 24px);
+    padding-right: calc((100vw - 1200px) / 2 + 24px);
+}
+
+@media (max-width: 1200px) {
+    .bg-alt {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+.section-title {
+    font-family: var(--font-titulos);
+    font-size: 2.5rem;
+    color: var(--color-rojo-vino);
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.section-title.left-align {
+    text-align: left;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--color-texto-mutado);
+    margin-bottom: 48px;
+    font-size: 1.1rem;
+}
+
+/* Botón Moderno */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--color-rojo-vino);
+    color: var(--color-blanco);
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition-fast);
+    box-shadow: 0 4px 15px rgba(107, 29, 47, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(107, 29, 47, 0.35);
+    background-color: #541422;
+}
+
+/* ==========================================================================
+   3. HEADER & NAVEGACIÓN (Mobile First)
+   ========================================================================== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(249, 246, 240, 0.85);
+    backdrop-filter: blur(12px); /* Efecto esmerilado translúcido moderno */
+    border-bottom: 1px solid rgba(107, 29, 47, 0.05);
+    transition: var(--transition-fast);
+}
+
+/* Al hacer scroll reducimos un poco el padding con JS */
+.main-header.scrolled {
+    padding: 8px 0;
+    background-color: rgba(249, 246, 240, 0.95);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-rojo-vino);
+    text-decoration: none;
+}
+
+/* Menú hamburguesa móvil */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.menu-toggle .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-rojo-vino);
+    transition: var(--transition-fast);
+}
+
+/* Estilos de navegación móvil (Desplegable oculto por defecto) */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    height: 100vh;
+    background-color: var(--color-blanco);
+    padding: 100px 40px;
+    transition: var(--transition-fast);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+}
+
+.nav-menu.active {
+    right: 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--color-oscuro);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.nav-menu a:hover {
+    color: var(--color-rojo-vino);
+    padding-left: 8px; /* Pequeño feedback visual interactivo */
+}
+
+/* Animación del botón hamburguesa transformándose en X */
+.menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+
+/* ==========================================================================
+   4. SECCIÓN HERO (Fondo elegante y centrado total)
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 500px;
+    /* Imagen abstracta estética y suave */
+    background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 24px;
+}
+
+/* Overlay oscuro/gradiente para garantizar contraste del texto */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(44, 37, 37, 0.8), rgba(107, 29, 47, 0.6));
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--color-blanco);
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-family: var(--font-titulos);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+
+/* ==========================================================================
+   5. SECCIÓN HOBBIES (Cards Modernas Flexbox / Grid)
+   ========================================================================== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center; /* Centra horizontalmente los elementos hijos */
+}
+
+.card {
+    background-color: var(--color-blanco);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-suave);
+    transition: var(--transition-fast);
+    max-width: 350px; /* Asegura tamaños consistentes */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efectos Hover elegantes solicitados */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-img-container {
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-container img {
+    transform: scale(1.08); /* Zoom sutil de imagen */
+}
+
+.card-content {
+    padding: 28px;
+}
+
+.card-content h3 {
+    font-family: var(--font-titulos);
+    color: var(--color-rojo-vino);
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+}
+
+.card-content p {
+    color: var(--color-texto-mutado);
+    font-size: 0.95rem;
+}
+
+
+/* ==========================================================================
+   6. SECCIÓN LUGARES FAVORITOS (Galería Tipo Grid)
+   ========================================================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 300px;
+    box-shadow: var(--shadow-suave);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Capa de información superpuesta en la foto */
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 24px 24px;
+    background: linear-gradient(transparent, rgba(44, 37, 37, 0.95));
+    color: var(--color-blanco);
+    transition: var(--transition-fast);
+}
+
+.gallery-overlay h3 {
+    font-family: var(--font-titulos);
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.gallery-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+/* Efecto hover interactivo en la galería */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   7. SECCIÓN SOBRE MÍ
+   ========================================================================== */
+.about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.about-image {
+    max-width: 380px;
+    width: 100%;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-hover);
+    border: 8px solid var(--color-blanco); /* Marco polaroid elegante */
+}
+
+.about-info {
+    flex: 1;
+}
+
+.about-text {
+    color: var(--color-texto-mutado);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+.about-goals {
+    background-color: rgba(243, 198, 198, 0.3); /* Rosa pastel con opacidad */
+    padding: 24px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--color-rojo-vino);
+    margin-top: 32px;
+}
+
+.about-goals h3 {
+    color: var(--color-rojo-vino);
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+.main-footer {
+    background-color: var(--color-oscuro);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================================================
+   9. EXTRA OPIONAL: ANIMACIONES DE ENTRADA (JS INTERSECTION OBSERVER)
+   ========================================================================== */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   10. MEDIA QUERIES (ESCRITORIO - RESPONSIVE DESIGN)
+   ========================================================================== */
+@media (min-width: 768px) {
+    /* El menú hamburguesa desaparece, se muestra la barra normal */
+    .menu-toggle {
+        display: none;
+    }
+    
+    .nav-menu {
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+    }
+    
+    .nav-menu ul {
+        flex-direction: row;
+        gap: 40px;
+    }
+    
+    .nav-menu a {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .nav-menu a:hover {
+        color: var(--color-rojo-vino);
+        padding-left: 0;
+    }
+
+    /* Redefinimos los grids a columnas múltiples */
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-grid {
+        flex-direction: row;
+        gap: 60px;
+    }
+
+    /* Tipografías un poco más grandes en pantallas grandes */
+    .hero h1 { font-size: 4rem; }
+    .section-title { font-size: 3rem; }
+}

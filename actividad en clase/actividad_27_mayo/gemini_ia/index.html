@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sara | Desarrolladora Web Junior</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">Sara.dev</a>
+            
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#hobbies">Hobbies</a></li>
+                    <li><a href="#lugares">Lugares Favoritos</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Hola, soy Sara 👋</h1>
+                <p>Desarrolladora Web Junior. Creando experiencias digitales con código limpio, creatividad y mucha pasión.</p>
+                <a href="#sobre-mi" class="btn-primary">Conóceme más</a>
+            </div>
+        </section>
+
+        <section id="hobbies" class="section-container scroll-reveal">
+            <h2 class="section-title">Mis Hobbies</h2>
+            <p class="section-subtitle">Lo que me apasiona y me desconecta del mundo digital.</p>
+            
+            <div class="cards-grid">
+                <article class="card">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Programando código de noche">
+                    </div>
+                    <div class="card-content">
+                        <h3>Desarrollo Creativo</h3>
+                        <p>Me encanta experimentar con nuevas propiedades de CSS, crear microanimaciones y darles vida a los diseños.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80" alt="Libros abiertos apilados">
+                    </div>
+                    <div class="card-content">
+                        <h3>Lectura de Fantasía</h3>
+                        <p>Perderme en novelas de mundos mágicos e historias épicas me ayuda a expandir mi imaginación y creatividad.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img-container">
+                        <img src="https://images.unsplash.com/photo-1461088945293-0c17689e48ac?auto=format&fit=crop&w=600&q=80" alt="Audífonos sobre fondo rosa">
+                    </div>
+                    <div class="card-content">
+                        <h3>Música & Canto</h3>
+                        <p>Tengo playlists para cada estado de ánimo. La música es mi combustible ideal mientras busco soluciones a los bugs.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="lugares" class="section-container bg-alt scroll-reveal">
+            <h2 class="section-title">Lugares Favoritos</h2>
+            <p class="section-subtitle">Esos rincones especiales que me inspiran y me llenan de energía.</p>
+            
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Playa al atardecer">
+                    <figcaption class="gallery-overlay">
+                        <h3>La Playa al Atardecer</h3>
+                        <p>El sonido de las olas es el mejor reseteo mental que existe.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80" alt="Librería antigua acogedora">
+                    <figcaption class="gallery-overlay">
+                        <h3>Cafés-Librerías</h3>
+                        <p>Un espacio silencioso, el olor a libros nuevos y un buen matcha latte.</p>
+                    </figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80" alt="Sendero en un bosque verde">
+                    <figcaption class="gallery-overlay">
+                        <h3>Senderos Naturales</h3>
+                        <p>Caminar entre árboles me desconecta de las pantallas y me da perspectiva.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="sobre-mi" class="section-container scroll-reveal">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80" alt="Retrato sonriente de Sara (Representación)">
+                </div>
+                <div class="about-info">
+                    <h2 class="section-title left-align">Sobre Mí</h2>
+                    <p class="about-text">
+                        ¡Hola de nuevo! Soy <strong>Sara</strong>, una mente curiosa de 16 años apasionada por el desarrollo frontend. Me encanta transformar ideas complejas en interfaces interactivas que sean bonitas y fáciles de usar.
+                    </p>
+                    <p class="about-text">
+                        Soy organizada, detallista y siempre estoy buscando retos que me fuercen a aprender algo nuevo. Cuando no estoy escribiendo código, seguro me encuentras leyendo o buscando nuevas canciones para mi biblioteca.
+                    </p>
+                    <div class="about-goals">
+                        <h3>Mi Meta como Dev</h3>
+                        <p>Quiero dominar el ecosistema frontend moderno, aportar a proyectos de código abierto y demostrar que con dedicación y lógica se puede construir cualquier cosa en la web.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 Sara. Hecho con 💖 usando HTML, CSS y JS Vanilla.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

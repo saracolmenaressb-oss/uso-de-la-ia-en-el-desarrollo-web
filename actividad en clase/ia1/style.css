@@ -1,0 +1,45 @@
+:root {
+    --rosa: #fce4ec;
+    --morado: #7b1fa2;
+    --fondo: #ffffff;
+    --texto: #333;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+    scroll-behavior: smooth;
+    margin: 0;
+  }
+  
+  .navbar {
+    position: fixed;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Galería con efecto hover */
+  .proyecto-item {
+    transition: transform 0.3s ease;
+    filter: grayscale(100%);
+  }
+  
+  .proyecto-item:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+    cursor: pointer;
+  }
+  
+  /* Breakpoints */
+  @media (min-width: 768px) {
+    .grid-proyectos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+  
+  @media (min-width: 1200px) {
+    .grid-proyectos { grid-template-columns: 1fr 1fr 1fr; }
+  }
