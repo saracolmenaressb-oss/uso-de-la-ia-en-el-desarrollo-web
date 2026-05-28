@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrar JSON Completo</title>
+
+  <style>
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background: #0f172a;
+      color: white;
+      padding: 30px;
+    }
+
+    h1{
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h2{
+      margin: 40px 0 20px;
+      color: #38bdf8;
+    }
+
+    /* ======================
+        TABLA
+    ====================== */
+
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      background: #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td{
+      padding: 12px;
+      border-bottom: 1px solid #334155;
+      text-align: left;
+    }
+
+    th{
+      background: #2563eb;
+    }
+
+    tr:hover{
+      background: #334155;
+    }
+
+    /* ======================
+        LISTA
+    ====================== */
+
+    .lista{
+      list-style: none;
+    }
+
+    .lista li{
+      background: #1e293b;
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .lista li:hover{
+      transform: translateX(5px);
+      background: #334155;
+    }
+
+    /* ======================
+        CARDS
+    ====================== */
+
+    .cards{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card{
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: 0.3s;
+    }
+
+    .card:hover{
+      transform: translateY(-5px);
+    }
+
+    .card h3{
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    .card p{
+      margin-bottom: 8px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Mostrar JSON en Tabla, Lista y Tarjetas</h1>
+
+  <!-- TABLA -->
+  <h2>Tabla</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Ciudad</th>
+      </tr>
+    </thead>
+
+    <tbody id="tablaBody"></tbody>
+  </table>
+
+  <!-- LISTA -->
+  <h2>Lista</h2>
+
+  <ul class="lista" id="lista"></ul>
+
+  <!-- TARJETAS -->
+  <h2>Tarjetas</h2>
+
+  <div class="cards" id="cards"></div>
+
+  <script>
+
+    const personas = [
+
+      {
+        id: 1,
+        nombre: "Alejandro Camacho Becerra",
+        producto: "Portátil",
+        precio: "899€",
+        ciudad: "Madrid"
+      },
+
+      {
+        id: 2,
+        nombre: "Alejandro Lopez Quintero",
+        producto: "Teclado",
+        precio: "45€",
+        ciudad: "Sevilla"
+      },
+
+      {
+        id: 3,
+        nombre: "Anderson Buitrago Guerrero",
+        producto: "Monitor",
+        precio: "210€",
+        ciudad: "Valencia"
+      },
+
+      {
+        id: 4,
+        nombre: "Daniel Jose Sierra Ricaurte",
+        producto: "Mouse",
+        precio: "25€",
+        ciudad: "Barcelona"
+      },
+
+      {
+        id: 5,
+        nombre: "Heiling Gisselle Leon Bernal",
+        producto: "Impresora",
+        precio: "150€",
+        ciudad: "Bilbao"
+      },
+
+      {
+        id: 6,
+        nombre: "Jessica Bibiana Urrego Leal",
+        producto: "Tablet",
+        precio: "320€",
+        ciudad: "Málaga"
+      },
+
+      {
+        id: 7,
+        nombre: "Juan David Arias Patiño",
+        producto: "Auriculares",
+        precio: "60€",
+        ciudad: "Granada"
+      },
+
+      {
+        id: 8,
+        nombre: "Juan David Marín González",
+        producto: "Smartphone",
+        precio: "799€",
+        ciudad: "Zaragoza"
+      },
+
+      {
+        id: 9,
+        nombre: "Juan José Acevedo Morales",
+        producto: "Cámara",
+        precio: "500€",
+        ciudad: "Murcia"
+      },
+
+      {
+        id: 10,
+        nombre: "Julian Andrés Agudelo Vega",
+        producto: "Disco Duro",
+        precio: "95€",
+        ciudad: "Alicante"
+      },
+
+      {
+        id: 11,
+        nombre: "Julieth Tatiana Rojas Hurtado",
+        producto: "Altavoz",
+        precio: "80€",
+        ciudad: "Córdoba"
+      },
+
+      {
+        id: 12,
+        nombre: "Keyner Andres Sepulveda Torres",
+        producto: "Router",
+        precio: "70€",
+        ciudad: "Santander"
+      },
+
+      {
+        id: 13,
+        nombre: "Keynner Alonso Sánchez Ortiz",
+        producto: "Webcam",
+        precio: "40€",
+        ciudad: "Toledo"
+      },
+
+      {
+        id: 14,
+        nombre: "Nicolas David Naranjo Barrios",
+        producto: "Micrófono",
+        precio: "120€",
+        ciudad: "Vigo"
+      },
+
+      {
+        id: 15,
+        nombre: "Oscar Julian Pinto Uribe",
+        producto: "Monitor Gamer",
+        precio: "250€",
+        ciudad: "Pamplona"
+      },
+
+      {
+        id: 16,
+        nombre: "Pedro Antonio Díaz Vergel",
+        producto: "Laptop Gamer",
+        precio: "1350€",
+        ciudad: "Salamanca"
+      },
+
+      {
+        id: 17,
+        nombre: "Ruben Santiago Carreño Torres",
+        producto: "SSD",
+        precio: "110€",
+        ciudad: "León"
+      },
+
+      {
+        id: 18,
+        nombre: "Sara Lucia Colmenares Bonilla",
+        producto: "Smartwatch",
+        precio: "199€",
+        ciudad: "Madrid"
+      }
+
+    ];
+
+    // =========================
+    // TABLA
+    // =========================
+
+    const tablaBody = document.getElementById("tablaBody");
+
+    personas.forEach(persona => {
+
+      tablaBody.innerHTML += `
+        <tr>
+          <td>${persona.id}</td>
+          <td>${persona.nombre}</td>
+          <td>${persona.producto}</td>
+          <td>${persona.precio}</td>
+          <td>${persona.ciudad}</td>
+        </tr>
+      `;
+    });
+
+    // =========================
+    // LISTA
+    // =========================
+
+    const lista = document.getElementById("lista");
+
+    personas.forEach(persona => {
+
+      lista.innerHTML += `
+        <li>
+          <strong>${persona.nombre}</strong><br>
+          Producto: ${persona.producto}<br>
+          Precio: ${persona.precio}<br>
+          Ciudad: ${persona.ciudad}
+        </li>
+      `;
+    });
+
+    // =========================
+    // TARJETAS
+    // =========================
+
+    const cards = document.getElementById("cards");
+
+    personas.forEach(persona => {
+
+      cards.innerHTML += `
+        <div class="card">
+
+          <h3>${persona.nombre}</h3>
+
+          <p><strong>ID:</strong> ${persona.id}</p>
+
+          <p><strong>Producto:</strong> ${persona.producto}</p>
+
+          <p><strong>Precio:</strong> ${persona.precio}</p>
+
+          <p><strong>Ciudad:</strong> ${persona.ciudad}</p>
+
+        </div>
+      `;
+    });
+
+  </script>
+
+</body>
+</html>

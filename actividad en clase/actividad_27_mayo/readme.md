@@ -108,7 +108,7 @@ Puedes agregar:
 - Tipografía moderna de Google Fonts
 - El objetivo es que la página se vea profesional, moderna y adecuada para un portafolio personal de una desarrolladora junior.”
 
-## probe el resultado del prompt anterior, pero no me guoste, lo corregi, y este fue el prompt final:
+## probe el resultado del prompt anterior, pero no me gusto, lo corregi, y este fue el prompt final:
 
 - Quiero que actúes como un desarrollador web senior experto en HTML5, CSS3 y JavaScript vanilla, además de funcionar como mi tutor de programación.
 Soy una desarrolladora web junior llamada Sara, por lo que necesito explicaciones claras, organizadas, detalladas y fáciles de entender. Quiero aprender mientras desarrollo el proyecto.
